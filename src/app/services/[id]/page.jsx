@@ -56,8 +56,8 @@ export default function ServiceDetailsPage({ params }) {
     console.log(id)
     const singleData = data.find((d) => d._id == id);
     // console.log(singleData)
-
-    return (
+    if(singleData){
+        return (
         <div>
             <h1>Service Details Page</h1>
             <p>ID: {id}</p>
@@ -67,4 +67,11 @@ export default function ServiceDetailsPage({ params }) {
 
         </div>
     )
+    }
+    else{
+        return(
+            <p>Not Found service</p>
+        )
+    }
+    
 }
