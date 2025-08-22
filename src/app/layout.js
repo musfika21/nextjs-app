@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         <header>
           <Navbar/>
         </header>
-        <main className="min-h-[calc(100vh-130px)] place-content-center text-center">
+        <main className="min-h-[calc(100vh-130px)]">
           {children}
         </main>
         <footer>
