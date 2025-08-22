@@ -1,8 +1,10 @@
-import Link from 'next/link';
-import React from 'react'
+"use client";
 
-export default function ServicesPage() {
-  const data = [
+import { use } from "react";
+
+export default function ServiceDetailsPage({ params }) {
+
+     const data = [
     {
       "_id": 11,
       "name": "QuickFix Plumbing",
@@ -46,23 +48,23 @@ export default function ServicesPage() {
       "contactEmail": "tutoring@brightminds.com",
       "available": true,
       "imageUrl": "https://via.placeholder.com/150?text=Tutoring"
-    },
+    }
   ];
 
-  return (
-    <div>
-      <p className='font-bold'>Services Page</p>
-      <div>
-        {
-          data.map(d => {
-            return (
-              <div key={d._id} className=''>
-                <Link href={`/services/${d._id}`}><div className='bg-slate-500 p-6 border-4 my-10'>{d.name}</div></Link>
-              </div>
-            )
-          })
-        }
-      </div>
-    </div>
-  )
+  const unwrappedParams = use(params);
+    const id = unwrappedParams?.id;
+    console.log(id)
+    const singleData = data.find((d) => d._id == id);
+    // console.log(singleData)
+
+    return (
+        <div>
+            <h1>Service Details Page</h1>
+            <p>ID: {id}</p>
+            <h1>{singleData.name}</h1>
+            <h6>{singleData.category}</h6>
+            <p>{singleData.description}</p>
+
+        </div>
+    )
 }
